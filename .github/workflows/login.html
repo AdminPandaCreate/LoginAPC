@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cloud Speicher - Registrierung</title>
+    <title>Cloud Speicher - Login</title>
     <style>
         * {
             margin: 0;
@@ -110,15 +110,14 @@
             }
         });
 
-        function register() {
-            var username = document.getElementById('reg-username').value;
-            var password = document.getElementById('reg-password').value;
-            if (username && password) {
-                localStorage.setItem(username, password);
-                alert('Registrierung erfolgreich! Bitte loggen Sie sich ein.');
-                window.location.href = 'login.html'; // Weiterleitung zur Login-Seite nach erfolgreicher Registrierung
+        function login() {
+            var username = document.getElementById('login-username').value;
+            var password = document.getElementById('login-password').value;
+            if (localStorage.getItem(username) === password) {
+                alert('Erfolgreich eingeloggt!');
+                window.location.href = 'cloud.html'; // Weiterleitung nach erfolgreichem Login
             } else {
-                alert('Bitte alle Felder ausfüllen!');
+                alert('Falscher Benutzername oder Passwort!');
             }
         }
 
@@ -143,11 +142,11 @@
 </head>
 <body>
     <div class="container">
-        <h2>Registrierung</h2>
-        <input type="text" id="reg-username" class="input-field" placeholder="Benutzername">
-        <input type="password" id="reg-password" class="input-field" placeholder="Passwort">
-        <button class="submit-btn" onclick="register()">Registrieren</button>
-        <p>Bereits registriert? <a href="login.html">Einloggen</a></p>
+        <h2>Login</h2>
+        <input type="text" id="login-username" class="input-field" placeholder="Benutzername">
+        <input type="password" id="login-password" class="input-field" placeholder="Passwort">
+        <button class="submit-btn" onclick="login()">Einloggen</button>
+        <p>Noch kein Konto? <a href="register.html">Jetzt registrieren</a></p>
     </div>
 
     <!-- Button für Dark/Light Mode mit Bild -->
